@@ -10,3 +10,5 @@ class EventoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Evento, EventoAdmin)
+
+
