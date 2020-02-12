@@ -17,3 +17,11 @@ class Evento (models.Model):
     def __str__(self):
         return self.titulo
 
+    def get_data_evento(self):
+        #para converter a data em português
+        tuplaSemana = ('Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo')
+        tuplaMes = ('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+                'Novembro', 'Dezembro')
+        return self.data_evento.strftime('{}, %d de {} de %Y as %H:%M'.format(tuplaSemana[self.data_evento.weekday()],
+                                                                               tuplaMes[self.data_evento.month - 1]))
+
