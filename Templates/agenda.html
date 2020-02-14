@@ -10,6 +10,8 @@
           <th scope="col">Título</th>
           <th scope="col">Data do Evento</th>
           <th scope="col">Usuario</th>
+            <th scope="col">Excluir</th>
+            <th scope="col">Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -24,13 +26,24 @@
         {% for e in eventos_list %}
             <tr>
               <th scope="row"> {{ e.id }}</th>
-              <td> {{ e.titulo }} </td>
-              <td> {{ e.get_data_evento }} </td>
-              <td> {{ e.usuario }} </td>
+                <td> {{ e.titulo }} </td>
+                <td> {{ e.get_data_evento }} </td>
+                <td> {{ e.usuario }} </td>
+                <td> <button onclick="confirmarExclusaoEvento({{ e.id }})" ><i class="material-icons red">delete </i> </button> </td>
+                <td> <a href="evento/?id={{ e.id }}"><i class="material-icons">edit </i> </a></td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
     <b>{{ evento.titulo }}</b>
+<script type="text/javascript">
+    function confirmarExclusaoEvento(id) {
+        console.log(id)
+        var isValid = confirm('Tem certeza que deseja excluir esse evento?');
+        if (isValid) {
+             window.location.href= "evento/delete/"+id
+         }
+    }
+</script>
 
 {% endblock %}

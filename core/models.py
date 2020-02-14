@@ -25,3 +25,6 @@ class Evento (models.Model):
         return self.data_evento.strftime('{}, %d de {} de %Y as %H:%M'.format(tuplaSemana[self.data_evento.weekday()],
                                                                                tuplaMes[self.data_evento.month - 1]))
 
+    def get_data_evento_input(self):
+        return self.data_evento.strftime('%Y-%m-%dT%H:%M')
+
