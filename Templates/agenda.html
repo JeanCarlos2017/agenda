@@ -24,14 +24,16 @@
         </tr>
        --->
         {% for e in eventos_list %}
-            <tr>
+            <tr style={% if e.get_evento_atrasado %}
+                                  "color:red"
+                            {% endif %} >
               <th scope="row"> {{ e.id }}</th>
-                <td> {{ e.titulo }} </td>
-                <td> {{ e.get_data_evento }} </td>
-                <td> {{ e.usuario }} </td>
-                <td> <button onclick="confirmarExclusaoEvento({{ e.id }})" ><i class="material-icons red">delete </i> </button> </td>
-                <td> <a href="evento/?id={{ e.id }}"><i class="material-icons">edit </i> </a></td>
-            </tr>
+                    <td > {{ e.titulo }} </td>
+                    <td> {{ e.get_data_evento }} </td>
+                    <td> {{ e.usuario }} </td>
+                    <td> <button onclick="confirmarExclusaoEvento({{ e.id }})" ><i class="material-icons red">delete </i> </button> </td>
+                    <td> <a href="evento/?id={{ e.id }}"><i class="material-icons">edit </i> </a></td>
+             </tr>
         {% endfor %}
       </tbody>
     </table>
